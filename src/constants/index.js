@@ -22,25 +22,12 @@ import {
   carrent,
   jobit,
   tripguide,
+  websitetoshow,
+  dashboard,
   threejs,
   // adobeillustrator,
   // expressjs,
 } from '../assets';
-
-export const navLinks = [
-  {
-    id: 'about',
-    title: 'About',
-  },
-  {
-    id: 'work',
-    title: 'Work',
-  },
-  {
-    id: 'contact',
-    title: 'Contact',
-  },
-];
 
 const services = [
   {
@@ -226,7 +213,8 @@ const projects = [
       },
     ],
     image: carrent,
-    source_code_link: 'https://github.com/',
+    source_code_link_github: 'https://github.com/',
+    source_code_link_website: 'https://www.google.com/',
   },
   {
     name: 'Job IT',
@@ -247,7 +235,8 @@ const projects = [
       },
     ],
     image: jobit,
-    source_code_link: 'https://github.com/',
+    source_code_link_github: 'https://github.com/',
+    source_code_link_website: 'https://www.google.com/',
   },
   {
     name: 'Trip Guide',
@@ -268,7 +257,52 @@ const projects = [
       },
     ],
     image: tripguide,
-    source_code_link: 'https://github.com/',
+    source_code_link_github: 'https://github.com/',
+    source_code_link_website: 'https://www.google.com/',
+  },
+  {
+    name: 'Eccommerce',
+    description:
+      'A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.',
+    tags: [
+      {
+        name: 'nextjs',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'supabase',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'css',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: websitetoshow,
+    source_code_link_github: 'https://github.com/',
+    source_code_link_website: 'https://www.google.com/',
+  },
+  {
+    name: 'Management',
+    description:
+      'A comprehensive Management software dashboard which helps in managing the world wide data colapse it and show the user simplified and comprised version.',
+    tags: [
+      {
+        name: 'nextjs',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'supabase',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'css',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: dashboard,
+    source_code_link_github: 'https://github.com/',
+    source_code_link_website: 'https://www.google.com/',
   },
 ];
 

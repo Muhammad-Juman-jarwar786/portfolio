@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 
 import {
   About,
@@ -11,26 +11,39 @@ import {
   Works,
   StarsCanvas,
 } from './components';
+import Login from './components/login/Login';
+import ProjectsShowCase from './pages/ProjectsShowCase';
+import AddProject from './components/projects/AddProject';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-primary">
-        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
-          <Hero />
-        </div>
-        <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <Feedbacks />
-        <div className="relative z-0">
-          <Contact />
-          <StarsCanvas />
-        </div>
-      </div>
-    </BrowserRouter>
+    <>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="relative z-0 bg-primary">
+              <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+                <Hero />
+              </div>
+              <About />
+              <Experience />
+              <Tech />
+              <Works />
+              <Feedbacks />
+              <div className="relative z-0">
+                <Contact />
+                <StarsCanvas />
+              </div>
+            </div>
+          }
+        />
+        <Route path="/projects" element={<ProjectsShowCase />} />
+        <Route path="/addproject" element={<AddProject />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
   );
 };
 

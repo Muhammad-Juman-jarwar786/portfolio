@@ -3,18 +3,20 @@ import { Tilt } from 'react-tilt';
 import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
-import { github } from '../assets';
+import { github, world } from '../assets';
 import { SectionWrapper } from '../hoc';
 import { projects } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
+import { Link } from 'react-router-dom';
 
-const ProjectCard = ({
+export const ProjectCard = ({
   index,
   name,
   description,
   tags,
   image,
-  source_code_link,
+  source_code_link_github,
+  source_code_link_website,
 }) => {
   return (
     <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
@@ -32,10 +34,21 @@ const ProjectCard = ({
             alt="project_image"
             className="w-full h-full object-cover rounded-2xl"
           />
-
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+          <div className="absolute top-0 left-0 h-fit w-fit m-3">
             <div
-              onClick={() => window.open(source_code_link, '_blank')}
+              onClick={() => window.open(source_code_link_website, '_blank')}
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+            >
+              <img
+                src={world}
+                alt="preview"
+                className="w-1/2 h-1/2 object-contain cursor-pointer"
+              />
+            </div>
+          </div>
+          <div className="absolute top-0 right-0 h-fit w-fit m-3">
+            <div
+              onClick={() => window.open(source_code_link_github, '_blank')}
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
               <img
@@ -89,9 +102,16 @@ const Works = () => {
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7 items-center justify-center">
-        {projects.map((project, index) => (
+        {projects.slice(0, 4).map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
+      </div>
+      <div className="text-center mt-10">
+        <Link to="/projects">
+          <button className="text-2xl text-orange-600 transition-all duration-500 hover:scale-110 hover:text-orange-500">
+            View All
+          </button>
+        </Link>
       </div>
     </>
   );
