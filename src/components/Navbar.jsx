@@ -55,7 +55,7 @@ const Navbar = () => {
             } hover:text-white text-[18px] font-medium cursor-pointer`}
             onClick={() => setActive('about')}
           >
-            <a href="#about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li
             className={`${
@@ -106,7 +106,7 @@ const Navbar = () => {
                   setActive('about');
                 }}
               >
-                <a href="#about">About</a>
+                <Link to="/about">About</Link>
               </li>
               <li
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
@@ -117,7 +117,7 @@ const Navbar = () => {
                   setActive('work');
                 }}
               >
-                <a href="#work">Work</a>
+                <Link to="/projects">Work</Link>
               </li>
               <li
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
@@ -139,7 +139,7 @@ const Navbar = () => {
                   setActive('login');
                 }}
               >
-                <a href="login">Admin Login</a>
+                <Link to="/login">Admin Login</Link>
               </li>
             </ul>
           </div>

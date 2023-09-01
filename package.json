@@ -10,27 +10,28 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
-    "@react-three/drei": "^9.56.24",
-    "@react-three/fiber": "^8.11.1",
+    "@react-three/drei": "^9.80.9",
+    "@react-three/fiber": "^8.13.7",
+    "@types/three": "^0.155.1",
     "firebase": "^10.3.0",
     "formik": "^2.4.3",
-    "framer-motion": "^9.0.7",
+    "framer-motion": "^10.16.2",
     "maath": "^0.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
-    "three": "^0.149.0",
+    "three": "^0.156.0",
     "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.4",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.6",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.29",
+    "tailwindcss": "^3.3.3",
     "vite": "^4.4.9"
   }
 }

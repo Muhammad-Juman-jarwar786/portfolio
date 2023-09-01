@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import {
   About,
@@ -14,6 +14,7 @@ import {
 import Login from './components/login/Login';
 import ProjectsShowCase from './pages/ProjectsShowCase';
 import AddProject from './components/projects/AddProject';
+import AboutMe from './pages/AboutMe';
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
             </div>
           }
         />
+        <Route path="/about" element={<AboutMe />} />
         <Route path="/projects" element={<ProjectsShowCase />} />
         <Route path="/addproject" element={<AddProject />} />
         <Route path="/login" element={<Login />} />

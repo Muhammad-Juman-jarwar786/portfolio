@@ -2,20 +2,8 @@ import { useFormik } from 'formik';
 import React, { useRef, useState } from 'react';
 import { addProjectSchema } from '../../validations/YupValidations';
 import DataBase from '../../config/firebase';
-
-// const saveProjectData = async (projectData) => {
-//   try {
-//     // Generate a unique key for the project
-//     const projectKey = DataBase.ref('projects').push().key;
-
-//     // Save the project data to the 'projects' node
-//     await DataBase.ref(`projects/${projectKey}`).set(projectData);
-
-//     console.log('Data saved successfully.');
-//   } catch (error) {
-//     console.error('Error saving data:', error);
-//   }
-// };
+import { ref, push } from 'firebase/database';
+import '../Button.css';
 
 const AddProject = () => {
   const formik = useFormik({
@@ -23,28 +11,39 @@ const AddProject = () => {
       name: '',
       description: '',
       tagname1: '',
-      tagcolor1: '',
       tagname2: '',
-      tagcolor2: '',
       tagname3: '',
-      tagcolor3: '',
       imageUrl: '',
       githubLink: '',
       websiteLink: '',
     },
     validationSchema: addProjectSchema,
     onSubmit: (values) => {
-      console.log(values);
       formik.resetForm();
-      // saveProjectData(values);
+      saveProjectData(values);
     },
   });
+
+  const saveProjectData = async (projectData) => {
+    try {
+      const dbRef = ref(DataBase, 'projects');
+
+      const newProjectRef = push(dbRef, projectData);
+
+      console.log('Data saved successfully.');
+    } catch (error) {
+      console.error('Error saving data:', error);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#050816]">
       <div className="bg-[#100D25] p-8 rounded-lg shadow-lg  mt-28 md:mt-0">
         <h2 className="text-3xl font-bold mb-4">ADD PROJECT</h2>
-        <form onSubmit={formik.handleSubmit} className="space-y-4">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="space-y-4 w-[80vw] lg:w-[40vw]"
+        >
           <div>
             <label htmlFor="name" className="block text-lg font-medium mb-1">
               Name
@@ -89,7 +88,7 @@ const AddProject = () => {
               Tags
             </label>
             <div className="space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 space-y-5 md:space-y-0 items-center gap-x-5">
+              <div className="grid space-y-5 md:space-y-0 items-center gap-x-5">
                 <div>
                   <input
                     type="text"
@@ -106,24 +105,8 @@ const AddProject = () => {
                     </p>
                   )}
                 </div>
-                <div>
-                  <input
-                    type="text"
-                    name="tagcolor1"
-                    placeholder="Tag(1) Color"
-                    value={formik.values.tagcolor1}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="w-full p-3 outline-none bg-[#151030] font-semibold text-white drop-shadow-lg border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                  />
-                  {formik.touched.tagcolor1 && formik.errors.tagcolor1 && (
-                    <p className="text-red-500 italic">
-                      {formik.errors.tagcolor1}
-                    </p>
-                  )}
-                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 space-y-5 md:space-y-0 items-center gap-x-5">
+              <div className="grid space-y-5 md:space-y-0 items-center gap-x-5">
                 <div>
                   <input
                     type="text"
@@ -140,24 +123,8 @@ const AddProject = () => {
                     </p>
                   )}
                 </div>
-                <div>
-                  <input
-                    type="text"
-                    name="tagcolor2"
-                    placeholder="Tag(2) Color"
-                    value={formik.values.tagcolor2}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="w-full p-3 outline-none bg-[#151030] font-semibold text-white drop-shadow-lg border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                  />
-                  {formik.touched.tagcolor2 && formik.errors.tagcolor2 && (
-                    <p className="text-red-500 italic">
-                      {formik.errors.tagcolor2}
-                    </p>
-                  )}
-                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 space-y-5 md:space-y-0 items-center gap-x-5">
+              <div className="grid space-y-5 md:space-y-0 items-center gap-x-5">
                 <div>
                   <input
                     type="text"
@@ -171,22 +138,6 @@ const AddProject = () => {
                   {formik.touched.tagname3 && formik.errors.tagname3 && (
                     <p className="text-red-500 italic">
                       {formik.errors.tagname3}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    name="tagcolor3"
-                    placeholder="Tag(3) Color"
-                    value={formik.values.tagcolor3}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="w-full p-3 outline-none bg-[#151030] font-semibold text-white drop-shadow-lg border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                  />
-                  {formik.touched.tagcolor3 && formik.errors.tagcolor3 && (
-                    <p className="text-red-500 italic">
-                      {formik.errors.tagcolor3}
                     </p>
                   )}
                 </div>
@@ -252,7 +203,7 @@ const AddProject = () => {
           </div>
           <button
             type="submit"
-            className="bg-[#151030] hover: drop-shadow-lg text-slate-50 font-bold text-lg transition-all duration-300 hover:scale-105 py-2 px-4 rounded-md shadow-md hover:bg-[#151040] mt-5"
+            className="btnSignIn bg-[#151030] hover: drop-shadow-lg text-slate-50 font-bold text-lg transition-all duration-500 hover:scale-105 py-2 px-4 rounded-md shadow-md hover:bg-[#151040] mt-5"
           >
             Add Project
           </button>

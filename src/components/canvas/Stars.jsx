@@ -5,7 +5,7 @@ import { Stars } from '@react-three/drei';
 const MovingStars = () => {
   const ref = useRef();
 
-  useFrame((delta) => {
+  useFrame((state, delta) => {
     ref.current.rotation.x += 0.05 * delta; // Increase the rotation speed
     ref.current.rotation.y += 0.19 * delta; // Increase the rotation speed
   });
