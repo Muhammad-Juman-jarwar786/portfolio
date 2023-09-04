@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import {
   About,
@@ -17,6 +18,10 @@ import AddProject from './components/projects/AddProject';
 import AboutMe from './pages/AboutMe';
 
 const App = () => {
+  useEffect(() => {
+    console.log('Main App Component is Rendering now');
+  }, []);
+
   return (
     <>
       <Navbar />

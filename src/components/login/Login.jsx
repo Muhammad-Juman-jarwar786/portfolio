@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { signInSchema } from '../../validations/YupValidations';
 import '../Button.css';
 
 const Login = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -18,13 +18,12 @@ const Login = () => {
         values.email == 'muhammad1juman@gmail.com' &&
         values.password == 'muhammad1juman786'
       ) {
-        navigate('/addproject');
+        // navigate('/addproject');
       } else {
         alert('Submit the correct Details Please');
       }
     },
   });
-
   return (
     <div className="flex items-center justify-center h-screen bg-[#050816] overflow-hidden">
       <div className="w-full max-w-md">
