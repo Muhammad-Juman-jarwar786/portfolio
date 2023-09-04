@@ -75,4 +75,4 @@ const ComputersCanvas = () => {
   );
 };
 
-export default ComputersCanvas;
+export default SectionWrapper(ComputersCanvas, 'computersCanvas');
